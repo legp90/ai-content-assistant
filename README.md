@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# ⚡ AI Assistant Lab (ai-content-assistant)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un entorno interactivo premium y laboratorio de contenido técnico desarrollado con **React, TypeScript y Tailwind CSS**. Este espacio fue diseñado para simular un espacio de trabajo de ingeniería, permitiendo estructurar prompts y gestionar historiales de generación en una interfaz moderna y optimizada de alta fidelidad.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Características Clave
 
-## React Compiler
+* **Diseño UI Premium:** Interfaz oscura (Zinc-950) de alta scannability construida con Tailwind CSS, optimizada para largas jornadas de desarrollo.
+* **Tipado Estricto con TypeScript:** Arquitectura de datos sólida mediante interfaces para el control del historial de consultas (`HistoryItem`) y estados de la aplicación.
+* **Barra Lateral de Historial:** Gestión dinámica de estados en React para almacenar, listar y recuperar consultas previas con marcas de tiempo en tiempo real.
+* **Copiado Rápido con un Clic:** Botón interactivo integrado con la API del portapapeles del navegador para extraer el *output* generado de forma inmediata.
+* **Resiliencia de Conexión (Arquitectura Fallback):** Sistema de contingencia inteligente que simula las respuestas del núcleo técnico si la API externa excede sus límites de cuota, garantizando un entorno 100% interactivo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Stack Tecnológico
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend:** React (Componentes Funcionales & Hooks de Estado)
+* **Lenguaje:** TypeScript (Tipado Estricto)
+* **Estilos:** Tailwind CSS (Arquitectura Utility-First & Animaciones de pulso)
+* **Herramienta de Construcción:** Vite (Entorno de desarrollo ultra rápido)
+* **Despliegue:** Vercel (CI/CD Automatizado ligado a la nube)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧠 Arquitectura Destacada: El Motor de Fallback
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Una de las implementaciones más maduras de este proyecto es su capacidad de resiliencia frente a fallos de servicios externos (como bloqueos de cuota regionales o límites de API Key en Google AI Studio):
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```typescript
+// Fragmento de la lógica de contingencia implementada
+try {
+  const response = await fetch(`https://generativelanguage.googleapis.com/...`);
+  if (!response.ok) throw new Error('Quota Exceeded');
+  // ...procesamiento de datos reales
+} catch (error) {
+  console.warn('Activando motor de respaldo por límite de cuota en Google.');
+  const simulatedText = generateLocalResponse(prompt);
+  setAiResponse(simulatedText);
+  setEngineMode('Simulated Core');
+}
