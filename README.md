@@ -1,42 +1,64 @@
-# ⚡ AI Assistant Lab (ai-content-assistant)
+# ⚡ AI Assistant Lab
 
-Un entorno interactivo premium y laboratorio de contenido técnico desarrollado con **React, TypeScript y Tailwind CSS**. Este espacio fue diseñado para simular un espacio de trabajo de ingeniería, permitiendo estructurar prompts y gestionar historiales de generación en una interfaz moderna y optimizada de alta fidelidad.
-
----
-
-## 🚀 Características Clave
-
-* **Diseño UI Premium:** Interfaz oscura (Zinc-950) de alta scannability construida con Tailwind CSS, optimizada para largas jornadas de desarrollo.
-* **Tipado Estricto con TypeScript:** Arquitectura de datos sólida mediante interfaces para el control del historial de consultas (`HistoryItem`) y estados de la aplicación.
-* **Barra Lateral de Historial:** Gestión dinámica de estados en React para almacenar, listar y recuperar consultas previas con marcas de tiempo en tiempo real.
-* **Copiado Rápido con un Clic:** Botón interactivo integrado con la API del portapapeles del navegador para extraer el *output* generado de forma inmediata.
-* **Resiliencia de Conexión (Arquitectura Fallback):** Sistema de contingencia inteligente que simula las respuestas del núcleo técnico si la API externa excede sus límites de cuota, garantizando un entorno 100% interactivo.
+A premium interactive environment and technical content laboratory engineered with **React, TypeScript, and Tailwind CSS**. This application was designed to simulate a production-ready engineering workspace, allowing users to structure prompts and seamlessly manage generation history within a modern, high-fidelity UI optimized for developers.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🚀 Key Features
 
-* **Frontend:** React (Componentes Funcionales & Hooks de Estado)
-* **Lenguaje:** TypeScript (Tipado Estricto)
-* **Estilos:** Tailwind CSS (Arquitectura Utility-First & Animaciones de pulso)
-* **Herramienta de Construcción:** Vite (Entorno de desarrollo ultra rápido)
-* **Despliegue:** Vercel (CI/CD Automatizado ligado a la nube)
+* **Premium UI Design:** A high-scannability dark interface (Zinc-950) built with Tailwind CSS, optimized for long development sessions.
+* **Strict Typing with TypeScript:** A robust data architecture utilizing strict interfaces to manage conversation history (`HistoryItem`) and application states.
+* **History Sidebar:** Dynamic state management in React to store, list, and retrieve previous queries with real-time timestamps.
+* **One-Click Fast Copy:** An interactive button integrated with the browser's Clipboard API to instantly extract the generated output.
+* **Connection Resilience (Fallback Architecture):** An intelligent contingency system that simulates technical core responses if external API quotas are exceeded, ensuring a 100% interactive environment.
 
 ---
 
-## 🧠 Arquitectura Destacada: El Motor de Fallback
+## 🛠️ Tech Stack
 
-Una de las implementaciones más maduras de este proyecto es su capacidad de resiliencia frente a fallos de servicios externos (como bloqueos de cuota regionales o límites de API Key en Google AI Studio):
+* **Frontend:** React (Functional Components & State Hooks)
+* **Language:** TypeScript (Strict Mode)
+* **Styling:** Tailwind CSS (Utility-First Architecture & Pulse Animations)
+* **Build Tool:** Vite (Ultra-fast development environment)
+* **Deployment:** Vercel (Automated cloud-linked CI/CD)
+
+---
+
+## 🧠 Highlighted Architecture: The Fallback Engine
+
+One of the most used implementations in this project is its resilience against external service failures (such as regional quota blocks or API Key limits in Google AI Studio):
 
 ```typescript
-// Fragmento de la lógica de contingencia implementada
+// Fragment of the implemented contingency logic
 try {
-  const response = await fetch(`https://generativelanguage.googleapis.com/...`);
+  const response = await fetch(`[https://generativelanguage.googleapis.com/](https://generativelanguage.googleapis.com/)...`);
   if (!response.ok) throw new Error('Quota Exceeded');
-  // ...procesamiento de datos reales
+  // ...real data processing
 } catch (error) {
-  console.warn('Activando motor de respaldo por límite de cuota en Google.');
+  console.warn('Activating backup engine due to Google API quota limit.');
   const simulatedText = generateLocalResponse(prompt);
   setAiResponse(simulatedText);
   setEngineMode('Simulated Core');
 }
+```
+
+---
+
+## 🔧 Installation and Local Setup
+
+Follow these steps to run the application locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/legp90/ai-content-assistant.git](https://github.com/legp90/ai-content-assistant.git)
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
