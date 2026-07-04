@@ -50,7 +50,7 @@ Follow these steps to run the application locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/legp90/ai-content-assistant.git](https://github.com/legp90/ai-content-assistant.git)
+   git clone https://github.com/legp90/ai-content-assistant.git
    ```
 
 2. **Install dependencies:**
