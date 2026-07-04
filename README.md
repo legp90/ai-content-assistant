@@ -2,6 +2,8 @@
 
 A premium interactive environment and technical content laboratory engineered with **React, TypeScript, and Tailwind CSS**. This application was designed to simulate a production-ready engineering workspace, allowing users to structure prompts and seamlessly manage generation history within a modern, high-fidelity UI optimized for developers.
 
+🌐 **Live Demo:** [View Live Instance](ai-content-assistant-alpha.vercel.app)
+
 ---
 
 ## 🚀 Key Features
